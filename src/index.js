@@ -1,5 +1,6 @@
 var React = require('react');
 var _     = require('lodash').noConflict();
+console.log('hello');
 
 var QuestionPanel = require('./questionPanel');
 
