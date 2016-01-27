@@ -99,10 +99,10 @@ class Question extends React.Component {
     let labelId = `${this.props.questionId}-label`;
 
     return (
-      <div className={this.props.classes.question}>
+      <div className={'form-group--section ' +  this.props.class}>
         {!!this.props.question
           ? (
-              <label className={this.props.classes.label}
+              <div className={' form-group__label'}
                      id={labelId}
                      htmlFor={this.props.questionId}>
                 {this.props.question}
@@ -110,17 +110,10 @@ class Question extends React.Component {
                    && this.props.input.required
                    ? this.props.renderRequiredAsterisk()
                    : undefined}
-              </label>
+              </div>
             )
           : undefined}
-        {!!this.props.text
-          ? (
-              <p className={this.props.classes.questionText}>
-                {this.props.text}
-              </p>
-            )
-          : undefined}
-        {validationErrors}
+        {/*validationErrors*/}
         <Input name={this.props.questionId}
                id={this.props.questionId}
                labelId={labelId}
@@ -130,11 +123,11 @@ class Question extends React.Component {
                placeholder={this.props.input.placeholder}
                required={this.props.input.required}
                classes={this.props.classes}
+               validationErrors={this.props.validationErrors[this.props.questionId]}
                onChange={this.handleInputChange.bind(this, this.props.questionId)}
                onBlur={this.handleInputBlur.bind(this, this.props.questionId)}
                onKeyDown={this.props.onKeyDown}
-               {...extraprops}
-        />
+               {...extraprops} />
         {!!this.props.postText
           ? (
               <p className={this.props.classes.questionPostText}>

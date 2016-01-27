@@ -113,32 +113,38 @@ class Winterfell extends React.Component {
                           panel => panel.panelId == this.state.currentPanel.panelId);
 
     return (
-      <form method={this.props.method}
-            encType={this.props.encType}
-            action={this.state.action}
-            ref={this.props.ref}
-            className={this.state.schema.classes.form}>
-        <div className={this.state.schema.classes.questionPanels}>
-          <QuestionPanel schema={this.state.schema}
-                         classes={this.state.schema.classes}
-                         panelId={currentPanel.panelId}
-                         panelIndex={currentPanel.panelIndex}
-                         panelHeader={currentPanel.panelHeader}
-                         panelText={currentPanel.panelText}
-                         action={currentPanel.action}
-                         button={currentPanel.button}
-                         backButton={currentPanel.backButton}
-                         questionSets={currentPanel.questionSets}
-                         questionAnswers={this.state.questionAnswers}
-                         panelHistory={this.panelHistory}
-                         renderError={this.props.renderError}
-                         renderRequiredAsterisk={this.props.renderRequiredAsterisk}
-                         onAnswerChange={this.handleAnswerChange.bind(this)}
-                         onPanelBack={this.handleBackButtonClick.bind(this)}
-                         onSwitchPanel={this.handleSwitchPanel.bind(this)}
-                         onSubmit={this.handleSubmit.bind(this)} />
+      <div className='tools-accordion-container tools-accordion-container--horizontal'>
+        <div className='pure-g'>
+          <div className='pure-u-1'>
+            <form method={this.props.method}
+                  encType={this.props.encType}
+                  action={this.state.action}
+                  ref={this.props.ref}
+                  className={this.state.schema.classes.form}>
+              //<div className={this.state.schema.classes.questionPanels}>
+                <QuestionPanel schema={this.state.schema}
+                               classes={this.state.schema.classes}
+                               panelId={currentPanel.panelId}
+                               panelIndex={currentPanel.panelIndex}
+                               panelHeader={currentPanel.panelHeader}
+                               panelText={currentPanel.panelText}
+                               action={currentPanel.action}
+                               button={currentPanel.button}
+                               backButton={currentPanel.backButton}
+                               questionSets={currentPanel.questionSets}
+                               questionAnswers={this.state.questionAnswers}
+                               panelHistory={this.panelHistory}
+                               renderError={this.props.renderError}
+                               renderRequiredAsterisk={this.props.renderRequiredAsterisk}
+                               onAnswerChange={this.handleAnswerChange.bind(this)}
+                               onPanelBack={this.handleBackButtonClick.bind(this)}
+                               onSwitchPanel={this.handleSwitchPanel.bind(this)}
+                               onSubmit={this.handleSubmit.bind(this)} />
+              //</div>
+            </form>
+          </div>
         </div>
-      </form>
+      </div>
     );
   }
 

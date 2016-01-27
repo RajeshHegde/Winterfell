@@ -3,7 +3,7 @@ var errorMessages = {
   /*
    * Fallback Error Message
    */
-  default        : 'Please correct the field below',
+  default        : 'Please correct the field above',
 
   /*
    * Min and Max string left message
@@ -97,6 +97,31 @@ var errorMessages = {
    * isIn array of items
    */
   isIn           : 'Please enter one of the allowed values',
+
+  /*
+   * isInt Min and Max integer values
+   */
+  isInt          : (validationItem) => {
+    switch (validationItem.params.length) {
+      case 1: {
+        if( validationItem.params[0].hasOwnProperty('min') && validationItem.params[0].hasOwnProperty('max') ) {
+          return 'Please enter a value between ' + validationItem.params[0].min
+               + ' and ' + validationItem.params[0].max;
+        }
+        else if( validationItem.params[0].hasOwnProperty('min') ) {
+          return 'Please enter a value greater than ' + validationItem.params[0].min;
+        }
+        else {
+          return 'Please enter a value less than ' + validationItem.params[0].max;
+        }
+        break;
+      }
+
+      default:
+        return errorMessages.default;
+        break;
+    }
+  },
 
   /*
    * isAllIn array of items
