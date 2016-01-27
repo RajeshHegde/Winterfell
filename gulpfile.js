@@ -22,7 +22,7 @@ gulp.task('build-examples', function() {
          .bundle()
          .pipe(source('app.js'))
          .pipe(buffer())
-         .pipe(uglify())
+//         .pipe(uglify())
          .pipe(gulp.dest('examples/build'));
 });
 
