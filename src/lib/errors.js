@@ -6,6 +6,13 @@ var errorMessages = {
   default        : 'Please correct the field above',
 
   /*
+   * isRequire
+   */
+  isRequire      : ( validationItem ) => {
+    return "Please enter the field above";
+  },
+
+  /*
    * Min and Max string left message
    */
   isLength       : (validationItem) => {

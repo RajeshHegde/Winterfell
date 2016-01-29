@@ -16,12 +16,16 @@ class AmountInput extends React.Component {
   handleChange(e) {
     var displayValue = e.target.value,
         value;
-    if (this.props.isDecimal) {
-      if (displayValue.indexOf('.') != -1 && displayValue.split('.')[1].length > 2) {
-        return;
+
+    displayValue = displayValue === '' ? null : displayValue;
+    if( displayValue !== null ) {
+      if ( this.props.isDecimal) {
+        if (displayValue.indexOf('.') != -1 && displayValue.split('.')[1].length > 2) {
+          return;
+        }
+      } else {
+          displayValue = displayValue.substring(0, displayValue.indexOf('.'));
       }
-    } else {
-        displayValue = displayValue.substring(0, displayValue.indexOf('.'));
     }
     value = displayValue === null ? null : displayValue * this.props.denominator;
     this.setState({
@@ -31,18 +35,8 @@ class AmountInput extends React.Component {
   }
 
   handleBlur() {
-    var value = this.state.value === null ? null : this.state.value * this.props.denominator;
+    var value = this.state.value === null ? null : this.state.value;
     this.props.onBlur.call( null, value);
-  }
-
-  componentWillReceiveProps(newProps) {
-    if ( newProps.value === null ) {
-      return;
-    }
-
-    if ( this.props.value !== newProps.value ) {
-      this.setState({value: newProps.value / newProps.denominator})
-    }
   }
 
   componentDidMount() {

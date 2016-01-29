@@ -14,12 +14,15 @@ class NumberInput extends React.Component {
 
   handleChange(e) {
     var value = e.target.value;
-    if (this.props.isDecimal) {
-      if (value.indexOf('.') != -1 && value.split('.')[1].length > 2) {
-        return;
+    value = value === '' ? null : value;
+    if( value !== null ) {
+      if (this.props.isDecimal) {
+        if (value.indexOf('.') != -1 && value.split('.')[1].length > 2) {
+          return;
+        }
+      } else {
+          value = value.substring(0, value.indexOf('.'));
       }
-    } else {
-        value = value.substring(0, value.indexOf('.'));
     }
     this.setState({
       value : value

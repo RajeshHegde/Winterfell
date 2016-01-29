@@ -79,7 +79,16 @@ class Winterfell extends React.Component {
 
     this.setState({
       currentPanel : panel
-    }, this.props.onSwitchPanel.bind(null, panel));
+    }, this.switchPanelCallback.bind( this, panel ));
+    // this.props.onSwitchPanel.call( null, panel, this.setPanel.bind(this,  panel ) );
+    // this.setState({
+    //   currentPanel : panel
+    // }, this.props.onSwitchPanel.bind(null, panel));
+  }
+
+  switchPanelCallback( panel ) {
+    this.props.onSwitchPanel.call( null, panel);
+    $('html, body').animate({scrollTop:0}, 'slow');
   }
 
   handleBackButtonClick() {
@@ -121,7 +130,7 @@ class Winterfell extends React.Component {
                   action={this.state.action}
                   ref={this.props.ref}
                   className={this.state.schema.classes.form}>
-              //<div className={this.state.schema.classes.questionPanels}>
+              {/*<div className={this.state.schema.classes.questionPanels}>*/}
                 <QuestionPanel schema={this.state.schema}
                                classes={this.state.schema.classes}
                                panelId={currentPanel.panelId}
@@ -132,6 +141,7 @@ class Winterfell extends React.Component {
                                button={currentPanel.button}
                                backButton={currentPanel.backButton}
                                questionSets={currentPanel.questionSets}
+                               customSets={currentPanel.customSets}
                                questionAnswers={this.state.questionAnswers}
                                panelHistory={this.panelHistory}
                                renderError={this.props.renderError}
@@ -139,8 +149,9 @@ class Winterfell extends React.Component {
                                onAnswerChange={this.handleAnswerChange.bind(this)}
                                onPanelBack={this.handleBackButtonClick.bind(this)}
                                onSwitchPanel={this.handleSwitchPanel.bind(this)}
-                               onSubmit={this.handleSubmit.bind(this)} />
-              //</div>
+                               onSubmit={this.handleSubmit.bind(this)} 
+                               getCustomRender={this.props.getCustomRender}/>
+              {/*</div>*/}
             </form>
           </div>
         </div>
@@ -175,7 +186,8 @@ Winterfell.defaultProps = {
   onSubmit               : () => {},
   onUpdate               : () => {},
   onSwitchPanel          : () => {},
-  onRender               : () => {}
+  onRender               : () => {},
+  getCustomRender        : () => {}
 };
 
 Winterfell.inputTypes    = require('./inputTypes');

@@ -22,6 +22,13 @@ var extraValidators = {
     return _.every(value, (item) => {
       return options.indexOf(item) > -1;
     });
+  },
+
+  isRequire : ( value ) => {
+    if( value === null || value === undefined || value === '' ) {
+      return false;
+    }
+    return true;
   }
 
 };
