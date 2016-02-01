@@ -1,6 +1,6 @@
 var React = require('react');
 var _     = require('lodash').noConflict();
-var FormSectionHeading = require('./core/FormSectionHeading');
+var FormSectionHeading = require('./core/formSectionHeading');
 
 var Question = require('./question');
 
