@@ -1,5 +1,5 @@
 {
-  "name": "winterfell",
+  "name": "curryroad",
   "version": "1.0.6",
   "description": "Generate complex, validated and extendable JSON-based forms in React",
   "main": "dist/index.js",
