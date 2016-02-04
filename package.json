@@ -9,6 +9,7 @@
     "build": "babel src --out-dir dist && webpack",
     "prepublish": "npm run clean && npm run build"
   },
+  "private": true,
   "keywords": [
     "winterfell",
     "form",

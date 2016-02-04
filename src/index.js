@@ -15,6 +15,7 @@ class Winterfell extends React.Component {
       formPanels     : [],
       questionPanels : [],
       questionSets   : [],
+      form           : {}
     }, this.props.schema);
 
     schema.formPanels = schema.formPanels
@@ -124,6 +125,9 @@ class Winterfell extends React.Component {
     return (
       <div className='tools-accordion-container tools-accordion-container--horizontal'>
         <div className='pure-g'>
+          <div className="pure-u-1 u-c-background-white">
+            <div className="u-c-secondary u-t-center tools-accordion-container__header h2">{this.state.schema.form.header}</div>
+          </div>
           <div className='pure-u-1'>
             <form method={this.props.method}
                   encType={this.props.encType}
@@ -172,7 +176,8 @@ Winterfell.defaultProps = {
     formPanels     : [],
     questionPanels : [],
     questionSets   : [],
-    classes        : {}
+    classes        : {},
+    form           : {}
   },
   questionAnswers        : {},
   ref                    : 'form',
